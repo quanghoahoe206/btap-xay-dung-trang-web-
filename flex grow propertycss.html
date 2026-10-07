@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành CSS Flexbox - flex-grow Property</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f7fafc;
+            color: #2d3748;
+            padding: 30px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #1a365d;
+            border-bottom: 2px solid #2b6cb0;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        p.desc {
+            font-size: 15px;
+            color: #4a5568;
+            margin-bottom: 25px;
+        }
+
+        .box-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2b6cb0;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        /* Flex container */
+        .flex-container {
+            display: flex;
+            background-color: #edf2f7;
+            border: 2px solid #cbd5e0;
+            border-radius: 6px;
+            padding: 10px;
+            gap: 10px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .item {
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 4px;
+            background-color: #cbd5e0;
+            color: #2d3748;
+        }
+
+        /* Trường hợp 1: Ô thứ 2 áp dụng flex-grow: 1, 4 ô còn lại mặc định (0) */
+        .case-1 .item-grow {
+            flex-grow: 1;
+            background-color: #3182ce;
+            color: #ffffff;
+        }
+
+        /* Trường hợp 2: Tất cả các ô đều có flex-grow: 1, riêng ô thứ 2 nhận gấp đôi (flex-grow: 2) */
+        .case-2 .item {
+            flex-grow: 1;
+        }
+        .case-2 .item-double-grow {
+            flex-grow: 2;
+            background-color: #e53e3e;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>[Thực hành] Thuộc tính CSS: flex-grow</h1>
+    <p class="desc">Ví dụ về vùng chứa chứa 5 phần tử div để kiểm tra khả năng mở rộng không gian trống.</p>
+
+    <!-- Trường hợp theo yêu cầu bài toán -->
+    <div class="box-section">
+        <h2>Trường hợp 1: Ô thứ 2 có <code>flex-grow: 1</code> (4 ô còn lại mang giá trị mặc định 0)</h2>
+        <p class="desc">Các ô 1, 3, 4, 5 chỉ chiếm diện tích vừa đủ nội dung. Toàn bộ khoảng trống còn dư của container sẽ được dồn cho ô số 2.</p>
+        <div class="flex-container case-1">
+            <div class="item">Ô 1</div>
+            <div class="item item-grow">Ô 2 (flex-grow: 1)</div>
+            <div class="item">Ô 3</div>
+            <div class="item">Ô 4</div>
+            <div class="item">Ô 5</div>
+        </div>
+    </div>
+
+    <!-- Mở rộng: Phân chia tỷ lệ không gian -->
+    <div class="box-section">
+        <h2>Trường hợp 2: So sánh tỷ lệ (Các ô có <code>flex-grow: 1</code>, ô thứ 2 có <code>flex-grow: 2</code>)</h2>
+        <p class="desc">Tất cả các ô đều chia nhau không gian thừa, riêng ô số 2 được nhận tỷ lệ nhiều gấp đôi.</p>
+        <div class="flex-container case-2">
+            <div class="item">Ô 1</div>
+            <div class="item item-double-grow">Ô 2 (flex-grow: 2)</div>
+            <div class="item">Ô 3</div>
+            <div class="item">Ô 4</div>
+            <div class="item">Ô 5</div>
+        </div>
+    </div>
+
+</body>
+</html>
