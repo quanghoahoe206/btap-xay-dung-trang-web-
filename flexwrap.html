@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành CSS Flexbox - flex-wrap property</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f7fafc;
+            color: #2d3748;
+            padding: 30px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #1a365d;
+            border-bottom: 2px solid #2b6cb0;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2b6cb0;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        p.desc {
+            font-size: 14px;
+            color: #4a5568;
+            margin-bottom: 12px;
+        }
+
+        .box-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+        }
+
+        /* Container cố định chiều rộng 600px */
+        .container {
+            display: flex;
+            width: 600px;
+            gap: 10px;
+            border: 2px solid #2d3748;
+            padding: 10px;
+            background-color: #edf2f7;
+            border-radius: 6px;
+        }
+
+        .item {
+            width: 180px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 4px;
+            flex-shrink: 0; /* Giữ kích thước 180px để thấy rõ bọc dòng hoặc tràn */
+        }
+
+        /* 1. nowrap: Không cho xuống dòng */
+        .case-nowrap {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+        .case-nowrap .item {
+            background-color: #9ae6b4;
+            color: #22543d;
+        }
+
+        /* 2. wrap: Xuống dòng theo hướng thông thường */
+        .case-wrap {
+            flex-wrap: wrap;
+        }
+        .case-wrap .item {
+            background-color: #90cdf4;
+            color: #1a365d;
+        }
+
+        /* 3. wrap-reverse: Xuống dòng và đảo ngược trục phụ (Cross Axis) */
+        .case-wrap-reverse {
+            flex-wrap: wrap-reverse;
+            min-height: 180px;
+        }
+        .case-wrap-reverse .item {
+            background-color: #feb2b2;
+            color: #742a2a;
+        }
+
+        /* 4. initial: Khôi phục về giá trị mặc định (nowrap) */
+        .case-initial {
+            flex-wrap: initial;
+            overflow-x: auto;
+        }
+        .case-initial .item {
+            background-color: #fefcbf;
+            color: #744210;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>[Thực hành] Thuộc tính CSS: flex-wrap</h1>
+
+    <!-- 1. nowrap -->
+    <div class="box-section">
+        <h2>1. <code>flex-wrap: nowrap;</code> (Mặc định)</h2>
+        <p class="desc">Các phần tử ép nằm trên 1 dòng duy nhất, không xuống dòng kể cả khi tổng chiều rộng vượt quá 600px.</p>
+        <div class="container case-nowrap">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+            <div class="item">Item 4</div>
+            <div class="item">Item 5</div>
+            <div class="item">Item 6</div>
+        </div>
+    </div>
+
+    <!-- 2. wrap -->
+    <div class="box-section">
+        <h2>2. <code>flex-wrap: wrap;</code></h2>
+        <p class="desc">Các phần tử tự động bọc xuống dòng kế tiếp từ trên xuống dưới (Item 1, 2, 3 ở hàng trên; Item 4, 5, 6 ở hàng dưới).</p>
+        <div class="container case-wrap">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+            <div class="item">Item 4</div>
+            <div class="item">Item 5</div>
+            <div class="item">Item 6</div>
+        </div>
+    </div>
+
+    <!-- 3. wrap-reverse -->
+    <div class="box-section">
+        <h2>3. <code>flex-wrap: wrap-reverse;</code></h2>
+        <p class="desc">Các phần tử bọc dòng theo hướng ngược lại của trục phụ (Item 4, 5, 6 đẩy lên hàng trên; Item 1, 2, 3 nằm ở hàng dưới).</p>
+        <div class="container case-wrap-reverse">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+            <div class="item">Item 4</div>
+            <div class="item">Item 5</div>
+            <div class="item">Item 6</div>
+        </div>
+    </div>
+
+    <!-- 4. initial -->
+    <div class="box-section">
+        <h2>4. <code>flex-wrap: initial;</code></h2>
+        <p class="desc">Khôi phục thuộc tính về giá trị mặc định của CSS (tương đương <code>nowrap</code>).</p>
+        <div class="container case-initial">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+            <div class="item">Item 4</div>
+            <div class="item">Item 5</div>
+            <div class="item">Item 6</div>
+        </div>
+    </div>
+
+</body>
+</html>
